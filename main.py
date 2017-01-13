@@ -12,7 +12,7 @@ GENIUS_ACCESS_KEY = "37175a09a1eb4234b2b23e324dc3e0b5"
 GENIUS_SECRET_KEY = "25635ed127034b3f9f5422f6c299fee2"
 
 # API Setup
-amazon = AmazonAPI(AMAZON_ACCESS_KEY, AMAZON_SECRET_KEY, AMAZON_ASSOC_TAG)
+amazon = AmazonAPI(AMAZON_ACCESS_KEY, AMAZON_SECRET_KEY, AMAZON_ASSOC_TAG, region='UK')
 
 # Load Post Definition
 post_def = sys.argv[1]
@@ -27,6 +27,7 @@ headers = {'X-Api-Key': GENIUS_ACCESS_KEY,
 
 # Construct Post
 intro = '<' + post_data['title_tag'] + '>' + post_data['intro_title'] + '</' + post_data['title_tag'] + '>'
+intro = intro + post_data['intro_copy']
 products = ''
 
 for product in post_data['products']:
@@ -46,4 +47,4 @@ for product in post_data['products']:
     products = products + '<a rel="nofollow" target="_blank" href="' + link + '">'
     products = products + '<img src="' + image_link + '" alt="' + product['title'] + '" />'
 
-    print (products)
+print (intro + products)
