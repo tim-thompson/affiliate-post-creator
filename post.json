@@ -1,0 +1,16 @@
+{
+  "title_tag": "h2",
+  "buy_button": "<p style=\"text-align: center;\"><button class=\"snip1562\">Buy from Amazon</button></p>",
+  "intro_title": "Created post test",
+  "intro_copy": "This is an introduction to a post created with my <b>new</b> fancy post creator!",
+  "products": [
+    {
+      "title": "Product 1",
+      "asin": "",
+      "affiliate_link": "",
+      "copy": "Hey it's the game Love Letter how cool is that!"
+    }
+  ],
+  "conclusion_title": "Well wasn't that fun!",
+  "conclusion_copy": "And thus ends the post created with my <a href=\"https://boardgamebeaver.com\">fancy new post creator!</a>"
+}
