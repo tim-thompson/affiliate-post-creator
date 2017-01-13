@@ -3,20 +3,25 @@ import requests
 import json
 import sys
 
+# Load Config
+post_def = sys.argv[1]
+key_def = sys.argv[2]
+
+with open(key_def) as key_file:
+    key_data = json.load(key_file)
+
 # API Keys
-AMAZON_ACCESS_KEY = "AKIAJC5VACJC5G4VQ5HA"
-AMAZON_SECRET_KEY = "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"
+AMAZON_ACCESS_KEY = key_data['amazon_access']
+AMAZON_SECRET_KEY = key_data['amazon_secret']
 AMAZON_ASSOC_TAG = "boagambea-21"
 
-GENIUS_ACCESS_KEY = "37175a09a1eb4234b2b23e324dc3e0b5"
-GENIUS_SECRET_KEY = "25635ed127034b3f9f5422f6c299fee2"
+GENIUS_ACCESS_KEY = key_data['genius_access']
+GENIUS_SECRET_KEY = key_data['genius_secret']
 
 # API Setup
 amazon = AmazonAPI(AMAZON_ACCESS_KEY, AMAZON_SECRET_KEY, AMAZON_ASSOC_TAG, region='UK')
 
 # Load Post Definition
-post_def = sys.argv[1]
-
 with open(post_def) as post_file:
     post_data = json.load(post_file)
 
@@ -45,6 +50,8 @@ for product in post_data['products']:
     products = products + '<' + post_data['title_tag'] + '>' + product['title'] + '</' + post_data['title_tag'] + '>'
     products = products + '</a>'
     products = products + '<a rel="nofollow" target="_blank" href="' + link + '">'
-    products = products + '<img src="' + image_link + '" alt="' + product['title'] + '" />'
+    products = products + '<img src="' + image_link + '" alt="' + product['title'] + '" /></a>'
+    products = products + product['copy']
+    products = products + '<a rel="nofollow" target="_blank" href="' + link + '">' + post_data['buy_button'] + '</a>'
 
 print (intro + products)
