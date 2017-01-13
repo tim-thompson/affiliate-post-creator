@@ -32,7 +32,7 @@ headers = {'X-Api-Key': GENIUS_ACCESS_KEY,
 
 # Construct Post
 intro = '<' + post_data['title_tag'] + '>' + post_data['intro_title'] + '</' + post_data['title_tag'] + '>'
-intro = intro + post_data['intro_copy']
+intro = intro + '<p>' + post_data['intro_copy'] + '</p>'
 products = ''
 
 for product in post_data['products']:
@@ -49,9 +49,12 @@ for product in post_data['products']:
     products = products + '<a rel="nofollow" target="_blank" href="' + link + '">'
     products = products + '<' + post_data['title_tag'] + '>' + product['title'] + '</' + post_data['title_tag'] + '>'
     products = products + '</a>'
-    products = products + '<a rel="nofollow" target="_blank" href="' + link + '">'
-    products = products + '<img src="' + image_link + '" alt="' + product['title'] + '" /></a>'
-    products = products + product['copy']
+    products = products + '<p><a rel="nofollow" target="_blank" href="' + link + '">'
+    products = products + '<img src="' + image_link + '" alt="' + product['title'] + '" /></a></p>'
+    products = products + '<p>' + product['copy'] + '</p>'
     products = products + '<a rel="nofollow" target="_blank" href="' + link + '">' + post_data['buy_button'] + '</a>'
 
-print (intro + products)
+conclusion = '<' + post_data['title_tag'] + '>' + post_data['conclusion_title'] + post_data['title_tag'] + '>'
+conclusion = conclusion + '<p>' + post_data['conclusion_copy'] + '</p>'
+
+print (intro + products + conclusion)
