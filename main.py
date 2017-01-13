@@ -54,7 +54,7 @@ for product in post_data['products']:
     products = products + '<p>' + product['copy'] + '</p>'
     products = products + '<a rel="nofollow" target="_blank" href="' + link + '">' + post_data['buy_button'] + '</a>'
 
-conclusion = '<' + post_data['title_tag'] + '>' + post_data['conclusion_title'] + post_data['title_tag'] + '>'
+conclusion = '<' + post_data['title_tag'] + '>' + post_data['conclusion_title'] + '</' + post_data['title_tag'] + '>'
 conclusion = conclusion + '<p>' + post_data['conclusion_copy'] + '</p>'
 
 print (intro + products + conclusion)
