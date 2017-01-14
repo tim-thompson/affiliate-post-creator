@@ -63,7 +63,8 @@ conclusion = '<' + post_data['title_tag'] + '>' + post_data['conclusion_title'] 
 conclusion = conclusion + '<p>' + post_data['conclusion_copy'] + '</p>'
 
 # Write HTML to file
-html = open('post.html', 'w')
+filename = post_def.split('.')[0]
+html = open(filename, 'w')
 html.write(intro + products + conclusion)
 html.close()
 
