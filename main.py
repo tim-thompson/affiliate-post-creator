@@ -51,9 +51,9 @@ for product in post_data['products']:
     image_link = amazon_product.large_image_url
     print ('Amazon image link retrieved')
 
+    products = products + '<' + post_data['title_tag'] + '>'
     products = products + '<a rel="nofollow" target="_blank" href="' + link + '">'
-    products = products + '<' + post_data['title_tag'] + '>' + product['title'] + '</' + post_data['title_tag'] + '>'
-    products = products + '</a>'
+    products = products + product['title'] + '</a></' + post_data['title_tag'] + '>'
     products = products + '<p><a rel="nofollow" target="_blank" href="' + link + '">'
     products = products + '<img class="aligncenter" src="' + image_link + '" alt="' + product['title'] + '" /></a></p>'
     products = products + '<p>' + product['copy'] + '</p>'
