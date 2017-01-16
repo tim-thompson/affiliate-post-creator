@@ -11,7 +11,7 @@ with open(key_def) as key_file:
 # API Keys
 AMAZON_ACCESS_KEY = key_data['amazon_access']
 AMAZON_SECRET_KEY = key_data['amazon_secret']
-AMAZON_ASSOC_TAG = "boagambea-21"
+AMAZON_ASSOC_TAG = key_data['amazon_assoc']
 
 GENIUS_ACCESS_KEY = key_data['genius_access']
 GENIUS_SECRET_KEY = key_data['genius_secret']
@@ -64,7 +64,7 @@ conclusion = conclusion + '<p>' + post_data['conclusion_copy'] + '</p>'
 
 # Write HTML to file
 filename = post_def.split('.')[0]
-html = open(filename, 'w')
+html = open(filename + '.html', 'w')
 html.write(intro + products + conclusion)
 html.close()
 
